@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Base</string>
+
+    <string name="load_message">加载中···</string>
+
+
+    *************************************Layout用语*******************************************
+<!--    四个item名称-->
+    <string name="item_one">item1</string>
+    <string name="item_two">item2</string>
+    <string name="item_three">item3</string>
+    <string name="item_four">item4</string>
+
+<!--    登录-->
+    <string name="login">登录</string>
+
+
+
+    *************************************提示用语*******************************************
+    <string name="exit_hint">再次点击,退出程序.</string>
+
+</resources>

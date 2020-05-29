@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_navigation"
+    app:startDestination="@id/threeFragment">
+
+    <fragment
+        android:id="@+id/threeFragment"
+        android:name="znyoo.name.baseproject.ui.fragment.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_threeFragment_to_registFragment"
+            app:destination="@id/registFragment" />
+        <action
+            android:id="@+id/action_threeFragment_to_forgetPwdFragment"
+            app:destination="@id/forgetPwdFragment" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_forgetPwdFragment"
+        app:destination="@+id/forgetPwdFragment" />
+
+    <fragment
+        android:id="@+id/registFragment"
+        android:name="znyoo.name.baseproject.ui.fragment.login.RegistFragment"
+        tools:layout="@layout/fragment_regist"
+        android:label="RegistFragment" />
+    <fragment
+        android:id="@+id/forgetPwdFragment"
+        android:name="znyoo.name.baseproject.ui.fragment.login.ForgetPwdFragment"
+        tools:layout="@layout/fragment_forget_pwd"
+        android:label="ForgetPwdFragment" />
+
+</navigation>

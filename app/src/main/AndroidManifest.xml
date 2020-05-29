@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="znyoo.name.baseproject">
+
+    <application
+        android:name=".SampleApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/weqwe"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/weqwe"
+        android:supportsRtl="true"
+        android:theme="@style/QMUI.Compat.NoActionBar">
+        <activity android:name=".ui.activity.LoginActivity"></activity>
+        <!-- Base项目适配标准,横向适配 -->
+        <!-- 现在通过utilcode提供的适配方案横向适配 -->
+        <!-- <meta-data -->
+        <!-- android:name="design_width_in_dp" -->
+        <!-- android:value="375"/> -->
+        <!-- 如果需要纵向适配 -->
+        <!-- <meta-data -->
+        <!-- android:name="design_height_in_dp" -->
+        <!-- android:value="640"/> -->
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+
+</manifest>

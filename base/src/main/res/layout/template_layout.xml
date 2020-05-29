@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="这是一个实例View"
+        android:gravity="center"
+        />
+
+    <include layout="@layout/loading"/>
+
+    <ViewStub
+        android:id="@+id/noContentView"
+        android:layout="@layout/no_content_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <ViewStub
+        android:id="@+id/loadErrorView"
+        android:layout="@layout/load_error_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</FrameLayout>

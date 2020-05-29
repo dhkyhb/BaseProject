@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/firstFragment">
+
+    <!--    ID 字段包含该目的地的 ID，它用于在代码中引用该目的地。-->
+    <!--    Label 字段包含该目的地的 XML 布局文件的名称。-->
+    <!--    Type 字段指示在您的源代码中，该目的地是作为 Fragment、Activity 还是其他自定义类实现的。-->
+    <!--    Class 下拉列表显示与该目的地相关联的类的名称。您可以点击此下拉列表，将相关联的类更改为其他目的地类型。-->
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="znyoo.name.baseproject.ui.fragment.main.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" />
+
+    <fragment
+        android:id="@+id/twoFragment"
+        android:name="znyoo.name.baseproject.ui.fragment.main.TwoFragment"
+        android:label="fragment_two"
+        tools:layout="@layout/fragment_two" />
+
+    <fragment
+        android:id="@+id/threeFragment"
+        android:name="znyoo.name.baseproject.ui.fragment.main.ThreeFragment"
+        android:label="fragment_three"
+        tools:layout="@layout/fragment_three" />
+
+    <fragment
+        android:id="@+id/fourFragment"
+        android:name="znyoo.name.baseproject.ui.fragment.main.FourFragment"
+        android:label="fragment_four"
+        tools:layout="@layout/fragment_four" />
+</navigation>
