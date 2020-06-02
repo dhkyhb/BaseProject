@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.AsyncDifferConfig;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -46,10 +49,8 @@ import java.util.List;
         };
 //设置适配器
         rec.setAdapter(stringRecyclerCommonAdapter);
-
-
  */
-public abstract class RecyclerCommonAdapter<T> extends RecyclerView.Adapter<BaseRecyclerViewHolder> {
+public abstract class RecyclerCommonAdapter<T> extends ListAdapter<T, BaseRecyclerViewHolder> {
     protected Context mContext;
     protected int mLayoutId;
     protected List<T> mDatas;
@@ -65,19 +66,18 @@ public abstract class RecyclerCommonAdapter<T> extends RecyclerView.Adapter<Base
         this.itemOnLongClickListener = itemOnLongClickListener;
     }
 
-    public RecyclerCommonAdapter(Context context, int layoutId, List<T> datas) {
+    public RecyclerCommonAdapter(Context context, int layoutId, List<T> datas, DiffUtil.ItemCallback<T> itemCallBack) {
+        super(new AsyncDifferConfig.Builder<T>(itemCallBack).build());
         mContext = context;
         mInflater = LayoutInflater.from(context);
         mLayoutId = layoutId;
         mDatas = datas;
     }
 
-
-
     @NonNull
     @Override
     public BaseRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        BaseRecyclerViewHolder recyclerViewHolder = BaseRecyclerViewHolder.get(this.mContext, viewGroup, this.mLayoutId);
+        BaseRecyclerViewHolder recyclerViewHolder = BaseRecyclerViewHolder.get(viewGroup.getContext(), viewGroup, this.mLayoutId);
         return recyclerViewHolder;
     }
 

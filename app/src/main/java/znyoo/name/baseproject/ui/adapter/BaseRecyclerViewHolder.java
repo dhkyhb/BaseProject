@@ -39,27 +39,14 @@ public class BaseRecyclerViewHolder extends RecyclerView.ViewHolder {
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
                 false);
         ViewDataBinding binding = DataBindingUtil.bind(itemView);
-        BaseRecyclerViewHolder holder = new BaseRecyclerViewHolder(context, itemView, parent, binding);
+        BaseRecyclerViewHolder holder = new BaseRecyclerViewHolder(context, parent, binding);
         return holder;
     }
 
-    public BaseRecyclerViewHolder(View itemView, ViewGroup parent) {
-        super(itemView);
-        mConvertView = itemView;
-        mViews = new SparseArray<View>();
-    }
-
-    public BaseRecyclerViewHolder(Context context, View itemView, ViewGroup parent) {
-        super(itemView);
+    public BaseRecyclerViewHolder(Context context, ViewGroup parent, @Nullable ViewDataBinding binding) {
+        super(binding.getRoot());
         mContext = context;
-        mConvertView = itemView;
-        mViews = new SparseArray<View>();
-    }
-
-    public BaseRecyclerViewHolder(Context context, View itemView, ViewGroup parent, @Nullable ViewDataBinding binding) {
-        super(itemView);
-        mContext = context;
-        mConvertView = itemView;
+        mConvertView = binding.getRoot();
         mViews = new SparseArray<View>();
         this.binding = binding;
     }
@@ -108,25 +95,26 @@ public class BaseRecyclerViewHolder extends RecyclerView.ViewHolder {
      * 关于事件的
      */
     public BaseRecyclerViewHolder setOnClickListener(int viewId,
-                                                                          View.OnClickListener listener) {
+                                                     View.OnClickListener listener) {
         View view = getView(viewId);
         view.setOnClickListener(listener);
         return this;
     }
 
     public BaseRecyclerViewHolder setOnTouchListener(int viewId,
-                                                                          View.OnTouchListener listener) {
+                                                     View.OnTouchListener listener) {
         View view = getView(viewId);
         view.setOnTouchListener(listener);
         return this;
     }
 
     public BaseRecyclerViewHolder setOnLongClickListener(int viewId,
-                                                                              View.OnLongClickListener listener) {
+                                                         View.OnLongClickListener listener) {
         View view = getView(viewId);
         view.setOnLongClickListener(listener);
         return this;
     }
+
 
     //得到databinding
     public <T extends ViewDataBinding> T getBinding() {

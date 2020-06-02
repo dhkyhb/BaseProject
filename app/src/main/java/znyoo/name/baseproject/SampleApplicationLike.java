@@ -30,9 +30,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasAndroidInjector;
 import me.jessyan.autosize.AutoSizeConfig;
 import znyoo.name.base.base.BaseActivity;
 import znyoo.name.base.common.CommonSetKt;
+import znyoo.name.baseproject.ui.di.AppInjector;
 import znyoo.name.netlibrary.retrofit.OnlineConfig;
 import znyoo.name.netlibrary.retrofit.XH_RXOnline;
 
@@ -47,10 +53,14 @@ import static znyoo.name.base.common.UrlConstantKt.TEST_MAIN_URL;
  *
  * 注意：这个类是Application的代理类，以前所有在Application的实现必须要全部拷贝到这里<br/>
  *
+ *  make your Application implement HasAndroidInjector and @Inject a DispatchingAndroidInjector<Object> to return from the androidInjector() method:
  * @author wenjiewu
  * @since 2016/11/7
  */
-public class SampleApplicationLike extends DefaultApplicationLike {
+public class SampleApplicationLike extends DefaultApplicationLike implements HasAndroidInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Object> dispatchingAndroidInjector;
 
     public static final String TAG = "Tinker.SampleApplicationLike";
 
@@ -95,6 +105,7 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         super.onCreate();
         initialize();
 
+//        AppInjector.INSTANCE.inject(getApplication());
     }
 
 
@@ -222,4 +233,8 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         XH_RXOnline.getInstance().setOnlineConfig(config);
     }
 
+    @Override
+    public AndroidInjector<Object> androidInjector() {
+        return dispatchingAndroidInjector;
+    }
 }

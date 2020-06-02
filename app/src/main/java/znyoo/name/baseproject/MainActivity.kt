@@ -4,14 +4,21 @@ import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.navOptions
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.content_main.*
 import me.majiajie.pagerbottomtabstrip.NavigationController
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener
 import znyoo.name.base.base.BaseActivity
 import znyoo.name.base.extension.exit
+import java.util.*
+import javax.inject.Inject
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), HasAndroidInjector{
 
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
     lateinit var mTabController: NavigationController
     lateinit var mNavController: NavController
 
@@ -98,4 +105,6 @@ class MainActivity : BaseActivity() {
             .setDefaultColor(resources.getColor(R.color.black20))
             .build()
     }
+
+    override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
 }
