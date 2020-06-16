@@ -35,15 +35,13 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasAndroidInjector;
-import me.jessyan.autosize.AutoSizeConfig;
 import znyoo.name.base.base.BaseActivity;
 import znyoo.name.base.common.CommonSetKt;
-import znyoo.name.baseproject.ui.di.AppInjector;
+import znyoo.name.baseproject.di.AppInjector;
 import znyoo.name.netlibrary.retrofit.OnlineConfig;
 import znyoo.name.netlibrary.retrofit.XH_RXOnline;
 
 import static znyoo.name.base.common.CommonSetKt.BUGLY_APPID;
-import static znyoo.name.base.common.CommonSetKt.ISTEST;
 import static znyoo.name.base.common.UrlConstantKt.MAIN_URL;
 import static znyoo.name.base.common.UrlConstantKt.TEST_MAIN_URL;
 
@@ -70,7 +68,6 @@ public class SampleApplicationLike extends DefaultApplicationLike implements Has
 
     //static 代码段可以防止内存泄露
     static {
-
         //设置全局的Header构建器  recycleview下拉上拉样式
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
             @NonNull
@@ -105,7 +102,7 @@ public class SampleApplicationLike extends DefaultApplicationLike implements Has
         super.onCreate();
         initialize();
 
-//        AppInjector.INSTANCE.inject(getApplication());
+        AppInjector.INSTANCE.inject(getApplication());
     }
 
 

@@ -6,6 +6,8 @@ buildscript {
     ext.nav_version = "2.3.0-alpha01"
     ext.archLifecycleVersion = '2.2.0'
     ext.dagger_version = '2.27'
+    ext.retrofit_version = '2.9.0'
+    ext.moshi_version = '1.9.2'
     repositories {
         google()
         jcenter()

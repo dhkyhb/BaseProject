@@ -7,7 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.permissionx.guolindev.PermissionBuilder
 import com.permissionx.guolindev.PermissionX
 import znyoo.name.base.common.toBundle
@@ -90,4 +90,4 @@ fun AppCompatActivity?.postDelay(delay:Long = 0, action: ()->Unit){
 }
 
 //view model
-fun <T: ViewModel> AppCompatActivity.getVM(clazz: Class<T>) = ViewModelProviders.of(this).get(clazz)
+fun <T: ViewModel> AppCompatActivity.getVM(clazz: Class<T>) = ViewModelProvider(this).get(clazz)

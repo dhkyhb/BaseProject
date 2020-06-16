@@ -1,6 +1,8 @@
 package znyoo.name.baseproject
 
+import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.navOptions
@@ -12,10 +14,11 @@ import me.majiajie.pagerbottomtabstrip.NavigationController
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener
 import znyoo.name.base.base.BaseActivity
 import znyoo.name.base.extension.exit
+import znyoo.name.baseproject.di.Injectable
 import java.util.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), HasAndroidInjector{
+class MainActivity : BaseActivity(), HasAndroidInjector, Injectable {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
@@ -23,7 +26,6 @@ class MainActivity : BaseActivity(), HasAndroidInjector{
     lateinit var mNavController: NavController
 
     override fun getLayoutId(): Int = R.layout.activity_main
-
 
     override fun initOnClick() {
         //系统返回键监
@@ -104,6 +106,10 @@ class MainActivity : BaseActivity(), HasAndroidInjector{
             )
             .setDefaultColor(resources.getColor(R.color.black20))
             .build()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 
     override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector

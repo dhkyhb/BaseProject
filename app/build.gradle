@@ -93,4 +93,8 @@ dependencies {
     api "com.android.support:multidex:1.0.1" // 多dex配置
 
     api project(path: ':netlibrary')
+
+    //    api "com.google.dagger:dagger-android-support:2.16"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 }

@@ -1,17 +1,13 @@
-package znyoo.name.baseproject.ui.di
+package znyoo.name.baseproject.di
 
 import android.app.Activity
 import android.app.Application
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import dagger.android.AndroidInjection
-import dagger.android.HasAndroidInjector
-import dagger.android.support.AndroidSupportInjection
-import znyoo.name.baseproject.SampleApplicationLike
 
 /**
  *  created by dhkyhb
@@ -22,6 +18,7 @@ import znyoo.name.baseproject.SampleApplicationLike
 
 object AppInjector {
     fun inject(app: Application) {
+        DaggerAppComponent.factory().create(app).inject(app)
         app.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                 handleActivity(activity)
@@ -49,7 +46,7 @@ object AppInjector {
     }
 
     private fun handleActivity(activity: Activity) {
-        if (activity is HasAndroidInjector) {
+        if (activity is Injectable) {
             AndroidInjection.inject(activity)
         }
 
@@ -62,7 +59,8 @@ object AppInjector {
                     v: View,
                     savedInstanceState: Bundle?
                 ) {
-                    AndroidSupportInjection.inject(f)
+                    if (f is Injectable)
+                        AndroidInjection.inject(activity)
                 }
             }, true)
         }

@@ -1,10 +1,11 @@
 package znyoo.name.baseproject.ui.fragment.main
 
 import znyoo.name.baseproject.R
+import znyoo.name.baseproject.di.Injectable
 import znyoo.name.baseproject.ui.base.BaseVmFragment
-import znyoo.name.baseproject.viewmodel.FirstViewModel
+import znyoo.name.baseproject.viewmodel.MainViewModel
 
-class TwoFragment : BaseVmFragment<FirstViewModel>() {
+class TwoFragment : BaseVmFragment<MainViewModel>(), Injectable {
 
     override fun initData() {
     }
@@ -25,7 +26,7 @@ class TwoFragment : BaseVmFragment<FirstViewModel>() {
         return R.layout.fragment_two
     }
 
-    override fun providerVMClass(): Class<FirstViewModel>? {
-        return FirstViewModel::class.java
+    override fun providerVMClass(): Class<MainViewModel>? {
+        return MainViewModel::class.java
     }
 }

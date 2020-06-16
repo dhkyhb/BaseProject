@@ -8,7 +8,6 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.blankj.utilcode.util.ObjectUtils
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.core.BasePopupView
@@ -18,6 +17,7 @@ import znyoo.name.base.base.BaseViewModel
 import znyoo.name.base.extension.gone
 import znyoo.name.base.extension.invisible
 import znyoo.name.base.extension.visible
+import znyoo.name.baseproject.di.Injectable
 import znyoo.name.baseproject.ui.custom.CustomLoadingView
 import znyoo.name.baseproject.viewmodel.LoginViewModel
 
@@ -28,7 +28,7 @@ import znyoo.name.baseproject.viewmodel.LoginViewModel
  *                  而应使用 ViewModel 执行此操作，并观察 LiveData 对象以将更改体现到视图中。
  *  link:
  */
-abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity(){
+abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity(), Injectable{
 
     var mViewModel: VM? = null
 

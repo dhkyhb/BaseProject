@@ -3,6 +3,7 @@ package znyoo.name.baseproject.viewmodel
 import androidx.lifecycle.SavedStateHandle
 import znyoo.name.base.base.BaseViewModel
 import znyoo.name.baseproject.api.NetServices
+import znyoo.name.baseproject.repository.MainRepostory
 import javax.inject.Inject
 
 /**
@@ -11,7 +12,7 @@ import javax.inject.Inject
  *  description:
  *  link:
  */
-class LoginViewModel @Inject constructor(netServices: NetServices) : BaseViewModel(){
+class MainViewModel @Inject constructor(repostory: MainRepostory) : BaseViewModel(){
 
 
 
