@@ -7,10 +7,16 @@ package znyoo.name.base.common
  *  link:
  */
 
+//测试调控
 const val ISTEST = false
 
+//app全局tag
+const val APP_TAG = "BaseProjects"
+
+//热更新APPID
 const val BUGLY_APPID = ""
 
+//Sp文件名
 const val SP_NAME = "HK_DATA"
 
 //图片缓存文件夹

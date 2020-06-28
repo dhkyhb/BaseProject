@@ -20,7 +20,7 @@ import androidx.lifecycle.LiveData
 import retrofit2.CallAdapter
 import retrofit2.CallAdapter.Factory
 import retrofit2.Retrofit
-import znyoo.name.baseproject.api.ApiResponse
+import znyoo.name.base.base.ApiResponse
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 

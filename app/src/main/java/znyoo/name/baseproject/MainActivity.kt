@@ -18,7 +18,7 @@ import znyoo.name.baseproject.di.Injectable
 import java.util.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), HasAndroidInjector, Injectable {
+class MainActivity : BaseActivity(), Injectable {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>

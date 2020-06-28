@@ -16,11 +16,9 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import znyoo.name.base.common.CommonSetKt;
+import znyoo.name.netlibrary.retrofit.api.A;
 
 import static com.uber.autodispose.AutoDispose.autoDisposable;
-import static znyoo.name.base.common.UrlConstantKt.MAIN_URL;
-import static znyoo.name.base.common.UrlConstantKt.TEST_MAIN_URL;
 
 /**
  * @author wangdh
@@ -66,7 +64,7 @@ public class StandardRXOnline {
     public void setOnlineConfig(@Nullable OnlineConfig config) {
         if (ObjectUtils.isEmpty(config)){
             config = new OnlineConfig();
-            config.url = MAIN_URL;
+            config.url = A.INSTANCE.MAIN_URL;
             config.isShowWait = true;
         }
 

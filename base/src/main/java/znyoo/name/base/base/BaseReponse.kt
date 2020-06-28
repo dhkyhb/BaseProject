@@ -11,10 +11,30 @@ import com.squareup.moshi.Json
 
 data class BaseReponse<T>(
     @Json(name = "code")
-    val code: String,
+    val code: String = "",
     @Json(name = "data")
-    val data: T,
+    val data: T?,
     @Json(name = "message")
-    val message: String
+    val message: String = ""
 )
+
+data class loginParamster(
+    @Json(name = "cellPhone")
+    var cellPhone: String,
+    @Json(name = "smsCode")
+    var smsCode: String,
+    @Json(name = "uuid")
+    var uuid: String
+)
+
+data class LoginBean(
+    val staffMid: String,
+    val userName: String,
+    val deviceCount: Int,
+    val srcAmt: Double,
+    val exceptionList: List<LoginData>,
+    val exceptionCount: Int
+)
+
+data class LoginData(val terminalName: String)
 

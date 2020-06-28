@@ -14,9 +14,12 @@ import com.lxj.xpopup.core.BasePopupView
 import znyoo.name.base.R
 import znyoo.name.base.base.BaseFragment
 import znyoo.name.base.base.BaseViewModel
+import znyoo.name.base.extension.LoginClick
 import znyoo.name.base.extension.gone
+import znyoo.name.base.extension.startActivity
 import znyoo.name.base.extension.visible
 import znyoo.name.baseproject.SampleApplicationLike
+import znyoo.name.baseproject.ui.activity.LoginActivity
 import znyoo.name.baseproject.ui.custom.CustomLoadingView
 import java.security.InvalidParameterException
 
@@ -46,7 +49,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : BaseFragment() {
     private var noContentView: View? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initVm()
+//        initVm()
         startObserve()
         handleError()
 
@@ -62,6 +65,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : BaseFragment() {
      *
      *  如果viewmodel有参数则继承AbstractSavedStateViewModelFactory实现自己的工厂类.
      */
+    @Deprecated(message = "init Viewmodel by dagger2")
     fun initVm() {
         mViewModel = providerVMClass()?.let {
             ViewModelProvider(this, SavedStateViewModelFactory(SampleApplicationLike.getInstance().application, this))[it]

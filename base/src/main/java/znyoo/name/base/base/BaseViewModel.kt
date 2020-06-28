@@ -1,9 +1,15 @@
 package znyoo.name.base.base
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.NetworkUtils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import znyoo.name.base.R
+import znyoo.name.base.common.BaseConfig
 
 /**
  *  created by dhkyhb
@@ -18,24 +24,55 @@ abstract class BaseViewModel() : ViewModel() {
 
     private lateinit var saveStateHandle: SavedStateHandle
 
-    constructor(saveStateHandle: SavedStateHandle) : this()
+    constructor(saveStateHandle: SavedStateHandle) : this() {
+        this.saveStateHandle = saveStateHandle
+    }
 
     val mException: MutableLiveData<Exception> = MutableLiveData()
 
     val error = MutableLiveData<String>()
 
     /**
+     * 统一处理 请求结果
+     */
+    protected fun handleResult(func: suspend CoroutineScope.() -> Unit) {
+        viewModelScope.launch {
+            LogUtils.i("handleResult start")
+            try {
+                val response = func()
+                LogUtils.e("response: $response")
+            } catch (e: Exception) {//协程抛出异常
+                LogUtils.e("Coroutine error $e -------- ${e.message}")
+                mException.postValue(e)
+                if (NetworkUtils.isAvailableByPing()) { //网络正常
+                    error.postValue(e.message ?: BaseConfig().context.getString(R.string.unknown_error))
+                } else {
+                    error.postValue(BaseConfig().context.getString(R.string.net_error))
+                }
+            }
+        }
+    }
+
+    /**
+     * 统一处理返回Response方法类
+     */
+    suspend fun <T>executeResponse(reponse: ApiResponse<T>) {
+
+    }
+
+    /**
      * 案例
      * 需要在资源限制导致重建的场景下保存的数据
      * 用LiveData暴露，不能让外部直接通过LiveData去修改内部的值
      */
-    private val mSavedTemplates: MutableLiveData<String>? = saveStateHandle.getLiveData(TEMPLATE_KEY)
+    private val mSavedTemplates: MutableLiveData<String>? =
+        saveStateHandle.getLiveData(TEMPLATE_KEY)
 
     /**
      * 案例
      * 设置值
      */
-    private fun setTemplate(template: String){
+    private fun setTemplate(template: String) {
         saveStateHandle.set(template, template)
     }
 

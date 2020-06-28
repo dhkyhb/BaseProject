@@ -14,10 +14,9 @@ import com.lxj.xpopup.core.BasePopupView
 import znyoo.name.base.R
 import znyoo.name.base.base.BaseActivity
 import znyoo.name.base.base.BaseViewModel
-import znyoo.name.base.extension.gone
-import znyoo.name.base.extension.invisible
-import znyoo.name.base.extension.visible
+import znyoo.name.base.extension.*
 import znyoo.name.baseproject.di.Injectable
+import znyoo.name.baseproject.ui.activity.LoginActivity
 import znyoo.name.baseproject.ui.custom.CustomLoadingView
 import znyoo.name.baseproject.viewmodel.LoginViewModel
 
@@ -156,6 +155,17 @@ abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity(), Injectable{
         if (!ObjectUtils.isEmpty(noContentView)) {
             noContentView?.gone()
         }
+    }
+
+    fun View.loginClick(action: (v: View) -> Unit) {
+        LoginClick(action,
+        action2 = {
+            gotoLogin()
+        })
+    }
+
+    private fun gotoLogin() {
+        startActivity<LoginActivity>()
     }
 
 }

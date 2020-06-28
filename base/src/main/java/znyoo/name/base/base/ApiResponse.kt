@@ -1,4 +1,4 @@
-package znyoo.name.baseproject.api
+package znyoo.name.base.base
 
 import retrofit2.Response
 
@@ -11,7 +11,7 @@ sealed class ApiResponse<R> {
             if (body == null || response.code() == 204) {
                 ApiEmptyResponse()
             } else {
-                AdiSuccessResponse(body)
+                ApiSuccessResponse(body)
             }
         } else {
             val msg = response.errorBody()?.toString()
@@ -35,6 +35,6 @@ sealed class ApiResponse<R> {
  */
 class ApiEmptyResponse<R> : ApiResponse<R>()
 
-data class AdiSuccessResponse<R>(val body: R) : ApiResponse<R>()
+data class ApiSuccessResponse<R>(val body: R) : ApiResponse<R>()
 
 data class APiFailureResponse<R>(val errorMessage: String) : ApiResponse<R>()

@@ -3,6 +3,13 @@ package znyoo.name.baseproject;
 import com.tencent.tinker.loader.app.TinkerApplication;
 import com.tencent.tinker.loader.shareutil.ShareConstants;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasAndroidInjector;
+import znyoo.name.baseproject.di.AppInjector;
+
 /**
  * 自定义Application.
  *
@@ -17,9 +24,24 @@ import com.tencent.tinker.loader.shareutil.ShareConstants;
  * @author wenjiewu
  * @since 2016/11/15
  */
-public class SampleApplication extends TinkerApplication {
+public class SampleApplication extends TinkerApplication implements HasAndroidInjector {
+    @Inject
+    DispatchingAndroidInjector<Object> dispatchingAndroidInjector;
+
     public SampleApplication() {
         super(ShareConstants.TINKER_ENABLE_ALL, "znyoo.name.baseproject.SampleApplicationLike",
                 "com.tencent.tinker.loader.TinkerLoader", false);
+    }
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        AppInjector.INSTANCE.inject(this);
+    }
+
+    @Override
+    public AndroidInjector<Object> androidInjector() {
+        return dispatchingAndroidInjector;
     }
 }

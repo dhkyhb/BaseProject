@@ -2,6 +2,7 @@ package znyoo.name.base.common
 
 import android.os.Bundle
 import android.os.Parcelable
+import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.SPUtils
 import java.io.Serializable
 
@@ -17,7 +18,25 @@ fun sp(): SPUtils? {
 }
 
 fun isLogin(): Boolean {
-    return (sp()?.getString("mid") ?: "").isNullOrEmpty()
+    return (sp()?.getString("mid") ?: "").isEmpty()
+}
+
+fun initLog() {
+    LogUtils.getConfig().run {
+        isLogSwitch = ISTEST//日志开启
+        globalTag = APP_TAG//全局tag
+        isLogHeadSwitch = true//头部信息开启
+        //setDir()            //设置 log 文件存储目录
+        //setFilePrefix()     //设置 log 文件前缀
+        //setBorderSwitch()   //设置 log 边框开关
+        //setSingleTagSwitch()//设置 log 单一 tag 开关（为美化 AS 3.1 的 Logcat）
+        //setConsoleFilter()  //设置 log 控制台过滤器
+        //setFileFilter()     //设置 log 文件过滤器
+        //setStackDeep()      //设置 log 栈深度
+        //setStackOffset()    //设置 log 栈偏移
+        //setSaveDays()       //设置 log 可保留天数
+        //addFormatter()      //新增 log 格式化器
+    }
 }
 
 /**

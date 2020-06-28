@@ -22,7 +22,7 @@ import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Callback
 import retrofit2.Response
-import znyoo.name.baseproject.api.ApiResponse
+import znyoo.name.base.base.ApiResponse
 import java.lang.reflect.Type
 import java.util.concurrent.atomic.AtomicBoolean
 

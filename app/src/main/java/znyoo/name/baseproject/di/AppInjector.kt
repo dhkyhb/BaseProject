@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import dagger.android.AndroidInjection
+import znyoo.name.baseproject.SampleApplication
 
 /**
  *  created by dhkyhb
@@ -17,7 +18,7 @@ import dagger.android.AndroidInjection
  */
 
 object AppInjector {
-    fun inject(app: Application) {
+    fun inject(app: SampleApplication) {
         DaggerAppComponent.factory().create(app).inject(app)
         app.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {

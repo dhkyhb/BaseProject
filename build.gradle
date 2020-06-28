@@ -8,6 +8,7 @@ buildscript {
     ext.dagger_version = '2.27'
     ext.retrofit_version = '2.9.0'
     ext.moshi_version = '1.9.2'
+    ext.smartfresh_version = '2.0.1'
     repositories {
         google()
         jcenter()

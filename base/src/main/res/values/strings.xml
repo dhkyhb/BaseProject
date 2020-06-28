@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Base</string>
 
+    <string name="unknown_error">未知异常</string>
+    <string name="net_error">网络异常</string>
     <string name="load_message">加载中···</string>
 
 

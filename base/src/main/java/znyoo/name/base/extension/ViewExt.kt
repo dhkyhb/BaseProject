@@ -8,6 +8,10 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import com.blankj.utilcode.util.ClickUtils
+import com.blankj.utilcode.util.KeyboardUtils
+import znyoo.name.base.base.BaseActivity
 import znyoo.name.base.common.isLogin
 
 /**
@@ -177,11 +181,26 @@ fun View.animateWidthAndHeight(targetWidth: Int, targetHeight: Int, duration: Lo
 fun View.LoginClick(action: (view: View) -> Unit, action2: () -> Unit) {
     setOnClickListener{
         if (!isLogin()){
-            action2()
             return@setOnClickListener
         }
         click(action)
+//        setOnClickListener(object: ClickUtils.OnDebouncingClickListener(){
+//            override fun onDebouncingClick(v: View?) {
+//                action(v!!)
+//            }
+//        })
     }
+}
+
+
+/**
+ * 隐藏键盘的点击方式
+ */
+fun View.ClickWithHideKeyBord(activity: BaseActivity, action: (view: View) -> Unit) {
+    if (KeyboardUtils.isSoftInputVisible(activity)) {
+        KeyboardUtils.hideSoftInput(activity)
+    }
+    click(action)
 }
 
 /**
@@ -295,3 +314,4 @@ fun View.toBitmap(): Bitmap {
 // 所有子View
 inline val ViewGroup.children
     get() = (0 until childCount).map { getChildAt(it) }
+

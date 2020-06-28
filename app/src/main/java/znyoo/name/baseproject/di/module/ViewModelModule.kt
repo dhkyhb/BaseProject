@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import znyoo.name.baseproject.di.ViewModelKey
 import znyoo.name.baseproject.viewmodel.CustomVIewModelFactory
+import znyoo.name.baseproject.viewmodel.LoginViewModel
 import znyoo.name.baseproject.viewmodel.MainViewModel
 
 /**
@@ -24,7 +25,12 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+    abstract fun bindMainViewModel(viewModel: MainViewModel): MainViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoginViewModel::class)
+    abstract fun bindLoginViewModel(viewModel: LoginViewModel): LoginViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: CustomVIewModelFactory): ViewModelProvider.Factory

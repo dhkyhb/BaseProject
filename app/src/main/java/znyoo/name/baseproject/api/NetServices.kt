@@ -1,9 +1,11 @@
 package znyoo.name.baseproject.api
 
 import androidx.lifecycle.LiveData
-import retrofit2.Call
 import retrofit2.http.POST
-import znyoo.name.baseproject.api.ApiResponse
+import znyoo.name.base.base.LoginBean
+import znyoo.name.base.base.ApiResponse
+import znyoo.name.base.base.BaseReponse
+import znyoo.name.netlibrary.retrofit.api.A
 
 /**
  * @ProjectName:    BaseProject
@@ -15,7 +17,10 @@ import znyoo.name.baseproject.api.ApiResponse
  */
 interface NetServices {
 
-    @POST("templates")
-    fun templateFunc(): LiveData<ApiResponse<String>>
+    @POST(A.TEMPLATES)
+    suspend fun templateFunc(): LiveData<ApiResponse<String>>
+
+    @POST(A.STAFFLOGINBYSMS)
+    suspend fun FuncLogin(): LiveData<ApiResponse<BaseReponse<LoginBean>>>
 
 }

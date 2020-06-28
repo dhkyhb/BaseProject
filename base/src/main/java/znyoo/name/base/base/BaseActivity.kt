@@ -20,10 +20,12 @@ import com.gyf.immersionbar.ImmersionBar
 import com.gyf.immersionbar.ktx.immersionBar
 import com.gyf.immersionbar.ktx.setFitsSystemWindows
 import com.qmuiteam.qmui.kotlin.onClick
+import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.currency_top.*
 import znyoo.name.base.R
 import znyoo.name.base.common.sp
 import znyoo.name.base.extension.click
+import znyoo.name.base.extension.startActivity
 import znyoo.name.base.extension.visible
 import znyoo.name.base.manage.ActivityCollector
 
@@ -33,7 +35,7 @@ import znyoo.name.base.manage.ActivityCollector
  *  description: 页面详情去看template_layout.xml
  *  link:
  */
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(), HasAndroidInjector {
 
     private val TAG = BaseActivity::class.java.simpleName
 
@@ -58,6 +60,11 @@ abstract class BaseActivity : AppCompatActivity() {
 
         initTopTitle()
         setBackListener()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ActivityCollector.getInstance().removeActivity(this)
     }
 
     /**
@@ -164,15 +171,4 @@ abstract class BaseActivity : AppCompatActivity() {
             LogUtils.w(TAG, e.message, e)
         }
     }
-
-    protected fun gotoLogin() {
-        sp()?.clear()
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        ActivityCollector.getInstance().removeActivity(this)
-    }
-
 }

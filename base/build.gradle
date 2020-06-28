@@ -111,8 +111,15 @@ dependencies {
     api 'com.permissionx.guolindev:permissionx:1.1.1'
 
     //上拉加载  下拉刷新
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'  //1.0.5及以前版本的老用户升级需谨慎，API改动过大
-    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.2'  //没有使用特殊Header，可以不加这行
+    api "com.scwang.smart:refresh-layout-kernel:$smartfresh_version"  //1.0.5及以前版本的老用户升级需谨慎，API改动过大
+    api "com.scwang.smart:refresh-header-classics:$smartfresh_version"    //经典刷新头
+    api "com.scwang.smart:refresh-header-radar:$smartfresh_version"       //雷达刷新头
+    api "com.scwang.smart:refresh-header-falsify:$smartfresh_version"     //虚拟刷新头
+    api "com.scwang.smart:refresh-header-material:$smartfresh_version"    //谷歌刷新头
+    api "com.scwang.smart:refresh-header-two-level:$smartfresh_version"   //二级刷新头
+    api "com.scwang.smart:refresh-footer-ball:$smartfresh_version"        //球脉冲加载
+    api "com.scwang.smart:refresh-footer-classics:$smartfresh_version"    //经典加载
+
 
     // 使用了Androidx  [https://github.com/donkingliang/ConsecutiveScroller]
     api 'com.github.donkingliang:ConsecutiveScroller:2.6.2'
