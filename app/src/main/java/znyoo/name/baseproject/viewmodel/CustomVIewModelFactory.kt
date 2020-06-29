@@ -7,6 +7,7 @@ import znyoo.name.baseproject.SampleApplication
 import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Provider
+import javax.inject.Singleton
 
 /**
  * @ProjectName:    BaseProject
@@ -16,6 +17,7 @@ import javax.inject.Provider
  * @CreateDate:     2020/6/10 6:00 PM
  * @Description:    viewmodelfactory 用于创建含有SavedStateHandle的自定义属性viewmodel工厂类
  */
+@Singleton
 class CustomVIewModelFactory @Inject constructor(
     private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ): ViewModelProvider.Factory {
@@ -23,6 +25,7 @@ class CustomVIewModelFactory @Inject constructor(
         val creator = creators[modelClass] ?: creators.entries.firstOrNull {
             modelClass.isAssignableFrom(modelClass)
         }?.value ?: throw IllegalArgumentException("unknown model class $modelClass")
+        @Suppress("UNCHECKED_CAST")
         return creator.get() as T
     }
 }

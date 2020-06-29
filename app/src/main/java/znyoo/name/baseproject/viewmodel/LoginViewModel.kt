@@ -30,7 +30,8 @@ class LoginViewModel @Inject constructor(val api: LoginRepostory) : BaseViewMode
 
     private fun getLoginResult(loginParamster: loginParamster) {
             handleResult {
-                _loginResult.value = api.login(viewModelScope).value
+                val reponse = api.login(loginParamster)
+                executeResponse(reponse)
             }
     }
 

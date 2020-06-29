@@ -181,6 +181,7 @@ fun View.animateWidthAndHeight(targetWidth: Int, targetHeight: Int, duration: Lo
 fun View.LoginClick(action: (view: View) -> Unit, action2: () -> Unit) {
     setOnClickListener{
         if (!isLogin()){
+            action2()
             return@setOnClickListener
         }
         click(action)

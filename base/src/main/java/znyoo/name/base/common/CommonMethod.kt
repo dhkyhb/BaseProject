@@ -18,12 +18,12 @@ fun sp(): SPUtils? {
 }
 
 fun isLogin(): Boolean {
-    return (sp()?.getString("mid") ?: "").isEmpty()
+    return (sp()?.getString("mid") ?: "").isNotBlank()
 }
 
 fun initLog() {
     LogUtils.getConfig().run {
-        isLogSwitch = ISTEST//日志开启
+        isLogSwitch = true     //日志开启
         globalTag = APP_TAG//全局tag
         isLogHeadSwitch = true//头部信息开启
         //setDir()            //设置 log 文件存储目录

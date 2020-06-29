@@ -10,11 +10,8 @@ import com.squareup.moshi.Json
  */
 
 data class BaseReponse<T>(
-    @Json(name = "code")
     val code: String = "",
-    @Json(name = "data")
     val data: T?,
-    @Json(name = "message")
     val message: String = ""
 )
 

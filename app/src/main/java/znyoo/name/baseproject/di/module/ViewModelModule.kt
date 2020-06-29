@@ -22,15 +22,18 @@ import znyoo.name.baseproject.viewmodel.MainViewModel
 @Module
 abstract class ViewModelModule {
 
+    /**
+     * @return 必须是viewmodel 不然的话 dagger2编译不过
+     */
     @Binds
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    abstract fun bindMainViewModel(viewModel: MainViewModel): MainViewModel
+    abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(LoginViewModel::class)
-    abstract fun bindLoginViewModel(viewModel: LoginViewModel): LoginViewModel
+    abstract fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: CustomVIewModelFactory): ViewModelProvider.Factory

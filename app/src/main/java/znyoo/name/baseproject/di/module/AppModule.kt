@@ -30,7 +30,7 @@ class AppModule {
 
         return Retrofit.Builder()
             .baseUrl(url)
-            .addConverterFactory(MoshiConverterFactory.create())
+//            .addConverterFactory(MoshiConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()

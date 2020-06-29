@@ -2,12 +2,14 @@ package znyoo.name.baseproject.di
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import dagger.android.AndroidInjection
+import dagger.android.support.AndroidSupportInjection
 import znyoo.name.baseproject.SampleApplication
 
 /**
@@ -54,14 +56,14 @@ object AppInjector {
         if (activity is FragmentActivity) {
             activity.supportFragmentManager.registerFragmentLifecycleCallbacks(object :
                 FragmentManager.FragmentLifecycleCallbacks() {
-                override fun onFragmentViewCreated(
+                override fun onFragmentAttached(
                     fm: FragmentManager,
                     f: Fragment,
-                    v: View,
-                    savedInstanceState: Bundle?
+                    context: Context
                 ) {
                     if (f is Injectable)
-                        AndroidInjection.inject(activity)
+                        AndroidSupportInjection.inject(f)
+                    super.onFragmentAttached(fm, f, context)
                 }
             }, true)
         }
