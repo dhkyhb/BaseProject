@@ -5,7 +5,7 @@ import znyoo.name.baseproject.ui.base.BaseVmFragment
 import znyoo.name.baseproject.viewmodel.MainViewModel
 import znyoo.name.baseproject.viewmodel.LoginViewModel
 
-class ForgetPwdFragment : BaseVmFragment<LoginViewModel>() {
+class ForgetPwdFragment : BaseVmFragment() {
 
     override fun initData() {
     }
@@ -26,7 +26,4 @@ class ForgetPwdFragment : BaseVmFragment<LoginViewModel>() {
         return R.layout.fragment_forget_pwd
     }
 
-    override fun providerVMClass(): Class<LoginViewModel>? {
-        return LoginViewModel::class.java
-    }
 }

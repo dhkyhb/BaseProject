@@ -1,10 +1,7 @@
 package znyoo.name.baseproject.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import znyoo.name.base.base.*
+import com.blankj.utilcode.util.LogUtils
+import znyoo.name.base.base.BaseReponse
 
 /**
  * @ProjectName:    BaseProject
@@ -16,6 +13,23 @@ import znyoo.name.base.base.*
  */
 open class BaseRepository {
 
-    suspend fun <T : Any?> apiCall(call: suspend () -> BaseReponse<T>) = call.invoke()
+    suspend fun <T : Any?> apiCall(
+        shouldFetch: Boolean = true,//是否应该从网络获取
+        saveCallResult: suspend (db: BaseReponse<T>) -> Unit = {},
+        loadFromDb: suspend () -> BaseReponse<T> = { BaseReponse(data = null) },
+        call: suspend () -> BaseReponse<T>
+    ): BaseReponse<T> {
+        var reponse: BaseReponse<T>
+        if (shouldFetch) {
+            LogUtils.i("load data from network")
+            reponse = call.invoke()
+            LogUtils.i("save db -------- $reponse")
+            saveCallResult(reponse)
+        }else {
+            reponse = loadFromDb()
+            LogUtils.i("load data from db -------- $reponse")
+        }
+        return reponse
+    }
 
 }

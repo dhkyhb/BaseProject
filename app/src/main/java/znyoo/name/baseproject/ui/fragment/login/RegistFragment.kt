@@ -5,7 +5,7 @@ import znyoo.name.baseproject.ui.base.BaseVmFragment
 import znyoo.name.baseproject.viewmodel.MainViewModel
 import znyoo.name.baseproject.viewmodel.LoginViewModel
 
-class RegistFragment : BaseVmFragment<LoginViewModel>() {
+class RegistFragment : BaseVmFragment() {
 
     override fun initData() {
     }
@@ -26,7 +26,4 @@ class RegistFragment : BaseVmFragment<LoginViewModel>() {
         return R.layout.fragment_regist
     }
 
-    override fun providerVMClass(): Class<LoginViewModel>? {
-        return LoginViewModel::class.java
-    }
 }

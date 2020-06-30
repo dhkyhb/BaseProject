@@ -15,10 +15,11 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener
 import znyoo.name.base.base.BaseActivity
 import znyoo.name.base.extension.exit
 import znyoo.name.baseproject.di.Injectable
+import znyoo.name.baseproject.ui.base.BaseVmActivity
 import java.util.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), Injectable {
+class MainActivity : BaseVmActivity(), Injectable {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>

@@ -1,12 +1,11 @@
 package znyoo.name.base.base
 
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.NetworkUtils
-import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -24,7 +23,7 @@ import znyoo.name.base.common.BaseConfig
  *  @param saveStateHandle 主要用于数据恢复、viewmodel生命周期长于Activity且能在配置更改之后数据恢复，但是因为资源限制导致的的Activity销毁之后的数据恢复只能通过
  *         onSaveInstanceStated来恢复数据、但这种方法只能恢复少量数据，大量数据会阻塞UI线程、此时可以通过saveStateHandle来完成这种情况下的数据恢复.
  */
-abstract class BaseViewModel() : ViewModel() {
+abstract class BaseViewModel : ViewModel(), LifecycleObserver{
 
 //    private lateinit var saveStateHandle: SavedStateHandle
 //
@@ -43,15 +42,19 @@ abstract class BaseViewModel() : ViewModel() {
         viewModelScope.launch {
             LogUtils.i("handleResult start")
             try {
-                func()
+                val reponse = func()
             } catch (e: Exception) {//协程抛出异常
                 LogUtils.e("Coroutine error $e -------- ${e.message}")
                 mException.postValue(e)
                 if (NetworkUtils.isAvailableByPing()) { //网络正常
-                    error.postValue(e.message ?: BaseConfig().context.getString(R.string.unknown_error))
+                    error.postValue(
+                        e.message ?: BaseConfig().context.getString(R.string.unknown_error)
+                    )
                 } else {
                     error.postValue(BaseConfig().context.getString(R.string.net_error))
                 }
+            } finally {
+
             }
         }
     }
@@ -59,16 +62,23 @@ abstract class BaseViewModel() : ViewModel() {
     /**
      * 统一处理返回Response方法类
      */
-    suspend fun <T>executeResponse(reponse: BaseReponse<T>,
-    errorBlock: suspend () -> Unit = {},
-    successBlock: suspend () -> Unit = {}) {
-        LogUtils.e("response: $reponse")
+    suspend fun <T> executeResponse(
+        response: BaseReponse<T>,
+        errorBlock: suspend () -> Unit = {},
+        successBlock: suspend () -> Unit = {}
+    ) {
+        LogUtils.e("response -------- $response")
+        LogUtils.i("executeResponseresponse -------- 数据解析开始")
         coroutineScope {
             //判断是否超时/过期/退出等操作 这里可以进行操作
-
-            if (reponse.data != null) {
+            if (response.code == "") {
+                LogUtils.i("当前为退出状态/需要重新登陆")
+            }
+            if (response.data != null) {
+                LogUtils.i("successBlock")
                 successBlock()
-            }else{
+            } else {
+                LogUtils.i("errorBlock")
                 errorBlock()
             }
         }
@@ -97,4 +107,7 @@ abstract class BaseViewModel() : ViewModel() {
     companion object {
         const val TEMPLATE_KEY = "template_key"
     }
+
+//    data class
+
 }

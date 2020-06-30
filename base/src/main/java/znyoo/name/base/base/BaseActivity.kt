@@ -70,10 +70,12 @@ abstract class BaseActivity : AppCompatActivity(), HasAndroidInjector {
     /**
      * [html]https://blankj.com/2018/12/18/android-adapt-screen-killer/#more
      * 适配规则
+     * PS: 重新使用autosize 来适配屏幕
      */
     override fun getResources(): Resources {
+        return super.getResources()
 //        宽度适配
-        return AdaptScreenUtils.adaptWidth(super.getResources(), 720)
+//        return AdaptScreenUtils.adaptWidth(super.getResources(), 720)
         //按高度适配
 //        return AdaptScreenUtils.adaptHeight(super.getResources(), 720)
         //如果某个页面不需要适配、直接返回这个

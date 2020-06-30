@@ -11,6 +11,7 @@ import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
 import com.tencent.bugly.beta.interfaces.BetaPatchListener
 import com.tencent.tinker.entry.DefaultApplicationLike
+import me.jessyan.autosize.AutoSizeConfig
 import znyoo.name.base.common.BUGLY_APPID
 import znyoo.name.base.common.BaseConfig
 import znyoo.name.base.common.ISTEST
@@ -120,17 +121,13 @@ open class SampleApplicationLike(
         Bugly.init(application, BUGLY_APPID, false)
         Beta.checkUpgrade(false, false)
 
-        //rutosize
-        //AutoSizeConfig.getInstance().setCustomFragment(true);
+        //rutosize 开启适配fragment
+        AutoSizeConfig.getInstance().setCustomFragment(true);
         SmartShow.init(application)
 
         BaseConfig().init(application)
         initOnline()
         initLog()
-    }
-
-    open fun getInstance(): SampleApplicationLike {
-        return instance
     }
 
     open fun initOnline() {

@@ -29,9 +29,8 @@ import java.security.InvalidParameterException
  *  description:
  *  link:
  */
-abstract class BaseVmFragment<VM : BaseViewModel> : BaseFragment() {
+abstract class BaseVmFragment : BaseFragment() {
 
-    protected var mViewModel: VM? = null
 
     /**
      * Activity中由于服务器异常导致加载失败显示的布局。
@@ -65,12 +64,12 @@ abstract class BaseVmFragment<VM : BaseViewModel> : BaseFragment() {
      *
      *  如果viewmodel有参数则继承AbstractSavedStateViewModelFactory实现自己的工厂类.
      */
-    @Deprecated(message = "init Viewmodel by dagger2")
-    fun initVm() {
-        mViewModel = providerVMClass()?.let {
-            ViewModelProvider(this, SavedStateViewModelFactory(SampleApplicationLike.getInstance().application, this))[it]
-        } ?: throw InvalidParameterException("Invalid Viewmodel Class")
-    }
+//    @Deprecated(message = "init Viewmodel by dagger2")
+//    fun initVm() {
+//        mViewModel = providerVMClass()?.let {
+//            ViewModelProvider(this, SavedStateViewModelFactory(SampleApplicationLike.getInstance().application, this))[it]
+//        } ?: throw InvalidParameterException("Invalid Viewmodel Class")
+//    }
 
     /**
      * 当Activity中的加载内容服务器返回失败，通过此方法显示提示界面给用户。
@@ -140,9 +139,8 @@ abstract class BaseVmFragment<VM : BaseViewModel> : BaseFragment() {
     fun showLoading() {
         loadingView?.run {
             dismiss()
-        }
-
-        activity?.run {
+            show()
+        } ?: activity?.run {
             loadingView = XPopup.Builder(this)
                 .hasShadowBg(true)
                 .dismissOnBackPressed(false)
@@ -164,7 +162,5 @@ abstract class BaseVmFragment<VM : BaseViewModel> : BaseFragment() {
     abstract fun startObserve()
 
     abstract fun handleError()
-
-    abstract fun providerVMClass(): Class<VM>?
 
 }

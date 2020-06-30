@@ -1,10 +1,8 @@
 package znyoo.name.baseproject.viewmodel
 
 import androidx.lifecycle.*
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
+import com.blankj.utilcode.util.LogUtils
 import znyoo.name.base.base.*
-import znyoo.name.baseproject.api.NetServices
 import znyoo.name.baseproject.repository.LoginRepostory
 import javax.inject.Inject
 
@@ -16,7 +14,7 @@ import javax.inject.Inject
  */
 class LoginViewModel @Inject constructor(val api: LoginRepostory) : BaseViewModel(){
 
-    val mloginParamster = MutableLiveData<loginParamster>()
+    private val mloginParamster = MutableLiveData<loginParamster>()
 
     private var _loginResult = MediatorLiveData<BaseReponse<LoginBean>>()
     val loginResult: LiveData<BaseReponse<LoginBean>>
@@ -30,9 +28,24 @@ class LoginViewModel @Inject constructor(val api: LoginRepostory) : BaseViewMode
 
     private fun getLoginResult(loginParamster: loginParamster) {
             handleResult {
-                val reponse = api.login(loginParamster)
-                executeResponse(reponse)
+                val response = api.login(loginParamster)
+                executeResponse(response){
+                    _loginResult.postValue(response)
+                }
             }
+    }
+
+    fun retry() {
+        val paramster = mloginParamster.value
+        mloginParamster.postValue(paramster)
+    }
+
+    fun setLoginParamster(paramster: loginParamster) {
+        if (mloginParamster.value == paramster) {
+            LogUtils.i("same content")
+            return
+        }
+        mloginParamster.postValue(paramster)
     }
 
 }

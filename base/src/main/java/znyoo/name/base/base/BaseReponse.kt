@@ -16,11 +16,8 @@ data class BaseReponse<T>(
 )
 
 data class loginParamster(
-    @Json(name = "cellPhone")
     var cellPhone: String,
-    @Json(name = "smsCode")
     var smsCode: String,
-    @Json(name = "uuid")
     var uuid: String
 )
 

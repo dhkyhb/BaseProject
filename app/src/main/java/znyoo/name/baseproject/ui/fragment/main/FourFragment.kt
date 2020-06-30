@@ -5,7 +5,7 @@ import znyoo.name.baseproject.di.Injectable
 import znyoo.name.baseproject.ui.base.BaseVmFragment
 import znyoo.name.baseproject.viewmodel.MainViewModel
 
-class FourFragment : BaseVmFragment<MainViewModel>(), Injectable {
+class FourFragment : BaseVmFragment(), Injectable {
 
     override fun initData() {
     }
@@ -26,7 +26,4 @@ class FourFragment : BaseVmFragment<MainViewModel>(), Injectable {
         return R.layout.fragment_four
     }
 
-    override fun providerVMClass(): Class<MainViewModel>? {
-        return MainViewModel::class.java
-    }
 }

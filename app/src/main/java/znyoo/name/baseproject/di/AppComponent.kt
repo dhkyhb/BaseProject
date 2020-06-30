@@ -5,9 +5,9 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import znyoo.name.baseproject.SampleApplication
+import znyoo.name.baseproject.di.module.AcitivtyModule
 import znyoo.name.baseproject.di.module.AppModule
 import znyoo.name.baseproject.di.module.LoginModule
-import znyoo.name.baseproject.di.module.MainModule
 import javax.inject.Singleton
 
 /**
@@ -18,7 +18,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class, AppModule::class, MainModule::class, LoginModule::class])
+@Component(modules = [AndroidInjectionModule::class, AppModule::class, AcitivtyModule::class])
 interface AppComponent {
 
     // Factory to create instances of the AppComponent

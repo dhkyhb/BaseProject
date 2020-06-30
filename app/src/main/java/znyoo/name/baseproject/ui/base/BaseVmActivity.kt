@@ -27,9 +27,7 @@ import znyoo.name.baseproject.viewmodel.LoginViewModel
  *                  而应使用 ViewModel 执行此操作，并观察 LiveData 对象以将更改体现到视图中。
  *  link:
  */
-abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity(), Injectable{
-
-    var mViewModel: VM? = null
+abstract class BaseVmActivity: BaseActivity(), Injectable{
 
     private val loadMessage  = "加载中"
 
@@ -48,17 +46,12 @@ abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity(), Injectable{
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        initVM()
 
         startObserve()
         handleError()
 
     }
 
-    /**
-     * 初始化Viewmodel
-     */
-    abstract fun initVM()
 
     /**
      * 处理Error

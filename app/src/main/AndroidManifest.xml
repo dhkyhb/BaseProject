@@ -14,10 +14,9 @@
         android:theme="@style/QMUI.Compat.NoActionBar">
         <activity android:name=".ui.activity.LoginActivity"></activity>
         <!-- Base项目适配标准,横向适配 -->
-        <!-- 现在通过utilcode提供的适配方案横向适配 -->
-        <!-- <meta-data -->
-        <!-- android:name="design_width_in_dp" -->
-        <!-- android:value="375"/> -->
+         <meta-data
+         android:name="design_width_in_dp"
+         android:value="375"/>
         <!-- 如果需要纵向适配 -->
         <!-- <meta-data -->
         <!-- android:name="design_height_in_dp" -->
