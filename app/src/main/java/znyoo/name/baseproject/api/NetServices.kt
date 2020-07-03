@@ -23,6 +23,6 @@ interface NetServices {
     suspend fun templateFunc(): BaseReponse<String>
 
     @POST(A.STAFFLOGINBYSMS)
-    suspend fun FuncLogin(@Body body: RequestBody): BaseReponse<LoginBean>
+    suspend fun FuncLogin(): BaseReponse<LoginBean>
 
 }

@@ -9,6 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import znyoo.name.base.common.ISTEST
 import znyoo.name.baseproject.api.NetServices
 import znyoo.name.netlibrary.retrofit.api.A
+import znyoo.name.netlibrary.retrofit.initClient
 import javax.inject.Singleton
 
 /**
@@ -17,7 +18,7 @@ import javax.inject.Singleton
  * @ClassName:      AppModule
  * @Author:         dhkyhb
  * @CreateDate:     2020/6/8 10:34 PM
- * @Description:    java类作用描述
+ * @Description:    dagger提供 接口module
  */
 @Module(includes = [ViewModelModule::class])
 class AppModule {
@@ -30,6 +31,7 @@ class AppModule {
 
         return Retrofit.Builder()
             .baseUrl(url)
+            .client(initClient())
 //            .addConverterFactory(MoshiConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(LiveDataCallAdapterFactory())

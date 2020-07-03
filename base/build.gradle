@@ -123,4 +123,7 @@ dependencies {
 
     // 使用了Androidx  [https://github.com/donkingliang/ConsecutiveScroller]
     api 'com.github.donkingliang:ConsecutiveScroller:2.6.2'
+
+    //一个强大并且灵活的RecyclerViewAdapter
+    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$adapter_version"
 }
