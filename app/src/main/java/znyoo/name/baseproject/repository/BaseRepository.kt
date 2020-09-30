@@ -23,6 +23,11 @@ open class BaseRepository {
         if (shouldFetch) {
             LogUtils.i("load data from network")
             reponse = call.invoke()
+            if (reponse.code == "") {
+                throw Exception("当前为退出状态/需要重新登陆")
+            } else if (reponse.data == null) {
+                throw Exception(reponse.message)
+            }
             LogUtils.i("save db -------- $reponse")
             saveCallResult(reponse)
         }else {

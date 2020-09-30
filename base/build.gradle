@@ -126,4 +126,11 @@ dependencies {
 
     //一个强大并且灵活的RecyclerViewAdapter
     api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$adapter_version"
+
+    //网络加载图片框架
+    api "com.github.bumptech.glide:glide:$glide_version"
+    api "com.squareup.picasso:picasso:$picasso_version"
+
+    //图标 导航三方库
+    api "com.github.PhilJay:MPAndroidChart:$chart_version"
 }

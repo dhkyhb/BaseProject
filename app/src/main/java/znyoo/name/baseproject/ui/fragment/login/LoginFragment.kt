@@ -19,7 +19,7 @@ class LoginFragment : BaseVmFragment(), Injectable {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val loginViewModel: LoginViewModel by activityViewModels {
+    private val loginViewModel: LoginViewModel by viewModels {
         viewModelFactory
     }
 
