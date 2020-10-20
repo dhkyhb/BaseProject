@@ -12,9 +12,9 @@ object A {
 
     const val SEPARATION = "/"
 
-    const val MAIN_URL = ""
+    const val MAIN_URL = "https://github.com/dhkyhb/BaseProject/"
 
-    const val TEST_MAIN_URL = ""
+    const val TEST_MAIN_URL = "https://github.com/dhkyhb/BaseProject/"
 
     const val TEMPLATES = "template"
 

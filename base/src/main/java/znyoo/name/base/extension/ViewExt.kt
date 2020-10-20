@@ -311,7 +311,6 @@ fun View.toBitmap(): Bitmap {
     }
 }
 
-
 // 所有子View
 inline val ViewGroup.children
     get() = (0 until childCount).map { getChildAt(it) }

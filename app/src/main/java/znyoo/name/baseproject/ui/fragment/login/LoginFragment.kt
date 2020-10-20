@@ -5,11 +5,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.blankj.utilcode.util.ToastUtils
+import com.qmuiteam.qmui.kotlin.onClick
 import com.qmuiteam.qmui.kotlin.onDebounceClick
 import kotlinx.android.synthetic.main.fragment_login.*
 import znyoo.name.base.base.loginParamster
 import znyoo.name.baseproject.R
 import znyoo.name.baseproject.di.Injectable
+import znyoo.name.baseproject.ext.onClick
 import znyoo.name.baseproject.ui.base.BaseVmFragment
 import znyoo.name.baseproject.viewmodel.LoginViewModel
 import javax.inject.Inject
@@ -28,7 +30,7 @@ class LoginFragment : BaseVmFragment(), Injectable {
 
     override fun initOnClick() {
         var f = true
-        login.onDebounceClick {
+        login.onClick {
             showLoading()
             if (f) {
                 loginViewModel.setLoginParamster(loginParamster("13856474956", "324f", "34562345"))

@@ -20,7 +20,7 @@ import javax.inject.Singleton
  * @CreateDate:     2020/6/8 10:34 PM
  * @Description:    dagger提供 接口module
  */
-@Module(includes = [ViewModelModule::class])
+@Module(includes = [ViewModelModule::class, AcitivtyModule::class])
 class AppModule {
 
     @Singleton

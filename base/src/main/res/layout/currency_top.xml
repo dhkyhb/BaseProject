@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tb_currency_top"
     android:layout_width="match_parent"
-    android:layout_height="65pt"
+    android:layout_height="65dp"
     android:background="@color/qmui_config_color_white">
 
     <ImageView
@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:paddingLeft="8pt"
+        android:paddingLeft="8dp"
         android:src="@drawable/qmui_icon_topbar_back"
          />
 
@@ -22,7 +22,7 @@
         android:singleLine="true"
         android:text="@string/app_name"
         android:textColor="@color/black2d"
-        android:textSize="17pt" />
+        android:textSize="17dp" />
 
     <!--文字-->
     <TextView
@@ -31,10 +31,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="14pt"
+        android:layout_marginRight="14dp"
         android:text="@string/app_name"
         android:textColor="@color/black2d"
-        android:textSize="14pt"
+        android:textSize="14dp"
         android:visibility="gone" />
     <!--image-->
     <ImageView
@@ -43,7 +43,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:paddingRight="14pt"
+        android:paddingRight="14dp"
         android:src="@drawable/qmui_icon_tip_new"
         android:tag="skin:all_bg:background"
         android:tint="@color/black2d"
@@ -53,7 +53,7 @@
 <!--    line-->
     <View
         android:layout_width="match_parent"
-        android:layout_height="1pt"
+        android:layout_height="1dp"
         android:background="@color/grayF33"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>

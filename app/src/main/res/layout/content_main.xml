@@ -15,7 +15,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="90pt"
+            android:layout_height="65dp"
             android:background="@color/qmui_config_color_white"
             android:fitsSystemWindows="true"
             app:contentInsetStart="0dp" />
@@ -29,14 +29,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tabIconTintMode="src_in"
             app:tabIndicatorColor="@color/colorPrimary"
-            app:tabMinWidth="45pt"
+            app:tabMinWidth="45dp"
             app:tabMode="scrollable" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <me.majiajie.pagerbottomtabstrip.PageNavigationView
         android:id="@+id/nav_view"
         android:layout_width="0dp"
-        android:layout_height="130pt"
+        android:layout_height="65dp"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:background="@color/qmui_config_color_white"

@@ -14,8 +14,8 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="74pt"
-            android:layout_height="88pt"
+            android:layout_width="74dp"
+            android:layout_height="88dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/bad_network_image" />
 
@@ -24,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20pt"
-            android:layout_marginBottom="20pt"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:textSize="12sp"
             android:textColor="@color/gray6f"
             tools:text="加载失败了"/>

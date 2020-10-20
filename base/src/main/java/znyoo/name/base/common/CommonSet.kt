@@ -21,3 +21,5 @@ const val SP_NAME = "HK_DATA"
 
 //图片缓存文件夹
 const val IMG_CACHE = "/Base"
+
+

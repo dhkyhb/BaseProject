@@ -1,16 +1,9 @@
 apply plugin: 'com.android.application'
-apply plugin: 'bugly'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 //apply from: 'tinker-support.gradle'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
-
-bugly {
-    debug = true
-    appId = ""
-    appKey = ""
-}
 
 android {
     compileSdkVersion 29
@@ -38,6 +31,27 @@ android {
             //mips64
         }
     }
+    signingConfigs {
+        def alias = ''
+        def password = ''
+        def filepath = 'your path'
+        release {
+            keyAlias alias
+            keyPassword password
+            storeFile file(filepath)
+            storePassword password
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        debug {
+            keyAlias alias
+            keyPassword password
+            storeFile file(filepath)
+            storePassword password
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -52,6 +66,7 @@ android {
                     apkData.outputFileName = filename
                 }
             }
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -71,6 +86,17 @@ android {
     dataBinding {
         enabled = true
     }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    // 本地集成aar需要此配置
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
@@ -89,7 +115,7 @@ dependencies {
     //其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.2.0
     api 'com.tencent.bugly:nativecrashreport:latest.release'
     // 指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
-    api 'com.tencent.tinker:tinker-android-lib:1.9.9'
+//    api 'com.tencent.tinker:tinker-android-lib:1.9.9'
     api "com.android.support:multidex:1.0.1" // 多dex配置
 
     api project(path: ':netlibrary')

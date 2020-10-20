@@ -33,7 +33,6 @@ public class SampleApplication extends TinkerApplication implements HasAndroidIn
                 "com.tencent.tinker.loader.TinkerLoader", false);
     }
 
-
     @Override
     public void onCreate() {
         super.onCreate();

@@ -2,7 +2,6 @@ package znyoo.name.netlibrary.retrofit.repository
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import znyoo.name.netlibrary.retrofit.db.UserDao
 import znyoo.name.netlibrary.retrofit.repository.db.User
 
 /**

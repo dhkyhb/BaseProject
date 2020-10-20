@@ -60,6 +60,8 @@ abstract class BaseActivity : AppCompatActivity(), HasAndroidInjector {
 
         initTopTitle()
         setBackListener()
+
+
     }
 
     override fun onDestroy() {

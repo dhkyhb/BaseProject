@@ -15,6 +15,7 @@ buildscript {
     ext.picasso_version = "2.71828"
     ext.chart_version = "v3.1.0"
     repositories {
+        maven { url uri('./repo') }
         google()
         jcenter()
 
